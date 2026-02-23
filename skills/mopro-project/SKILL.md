@@ -1,5 +1,10 @@
 ---
+name: mopro-project
 description: Initialize mopro projects, build ZK bindings for mobile platforms, create app templates, scaffold new ZK apps, compile for iOS/Android/Flutter/React Native/Web, mopro init, mopro build, mopro create
+license: MIT
+metadata:
+  author: zkmopro
+  version: "0.1.0"
 ---
 
 # Mopro Project Workflow
@@ -67,8 +72,9 @@ About to run: mopro build --platforms <platform> --mode <mode> --architectures <
 Proceed? [Y/n]
 ```
 
-**Run the build in background** using `run_in_background=true` in Bash.
-Check on progress periodically. Do NOT assume failure from slow output.
+**Run the build in background** if your agent supports background/async execution.
+Builds take 5-15 minutes in release mode. Check periodically.
+Do NOT assume failure from slow output.
 
 After build completes, verify output directory exists:
 - iOS: `MoproiOSBindings/`

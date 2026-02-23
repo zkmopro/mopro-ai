@@ -1,5 +1,10 @@
 ---
+name: mopro-device
 description: Manage simulators and emulators for mopro development, run on iOS simulator, start Android emulator, list connected devices, test on phone, launch simulator, deploy to device
+license: MIT
+metadata:
+  author: zkmopro
+  version: "0.1.0"
 ---
 
 # Mopro Device Management
@@ -22,8 +27,10 @@ Show all available simulators, emulators, and connected physical devices.
 
 Run the unified device listing script:
 ```bash
-bash $SKILL_DIR/scripts/list-devices.sh
+bash scripts/list-devices.sh
 ```
+
+> Run from the skill directory. The script outputs a JSON array to parse and present.
 
 Or check platforms individually:
 ```bash

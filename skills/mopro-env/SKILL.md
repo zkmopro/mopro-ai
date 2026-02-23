@@ -1,5 +1,10 @@
 ---
+name: mopro-env
 description: Check mopro development environment, install prerequisites, setup toolchain, diagnose missing build tools, resolve environment issues for mobile ZK development
+license: MIT
+metadata:
+  author: zkmopro
+  version: "0.1.0"
 ---
 
 # Mopro Environment Setup
@@ -22,8 +27,10 @@ development and guides them through installing missing prerequisites.
 Run the unified environment check script:
 
 ```bash
-bash $SKILL_DIR/scripts/check-env.sh
+bash scripts/check-env.sh
 ```
+
+> Run from the skill directory. The script outputs a JSON array to parse and present.
 
 This outputs a JSON array of tool statuses. Parse and present results clearly.
 

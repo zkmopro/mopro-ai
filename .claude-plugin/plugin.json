@@ -1,6 +1,13 @@
 {
   "name": "mopro",
   "version": "0.1.0",
-  "description": "Claude Code plugin for building mobile-native zero-knowledge proof applications with mopro",
-  "homepage": "https://github.com/zkmopro/mopro-ai"
+  "description": "Build mobile-native zero-knowledge proof apps with mopro (Circom, Halo2, Noir \u2192 iOS, Android, Flutter, React Native, Web)",
+  "author": {
+    "name": "zkmopro",
+    "url": "https://zkmopro.org"
+  },
+  "homepage": "https://zkmopro.org",
+  "repository": "https://github.com/zkmopro/mopro-ai",
+  "license": "MIT",
+  "keywords": ["zk", "zero-knowledge", "mobile", "ios", "android", "flutter", "react-native", "circom", "halo2", "noir", "mopro"]
 }

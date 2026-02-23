@@ -38,6 +38,43 @@ jobs:
       - name: Validate plugin structure
         run: bash tests/validate-structure.sh
 
+  agent-agnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check AGENTS.md exists
+        run: test -f AGENTS.md
+      - name: Validate CLAUDE.md symlink
+        run: |
+          if [ ! -L CLAUDE.md ]; then
+            echo "FAIL: CLAUDE.md is not a symlink"
+            exit 1
+          fi
+          target=$(readlink CLAUDE.md)
+          if [ "$target" != "AGENTS.md" ]; then
+            echo "FAIL: CLAUDE.md points to '$target', expected AGENTS.md"
+            exit 1
+          fi
+          echo "OK: CLAUDE.md -> AGENTS.md"
+      - name: Check rules file exists
+        run: test -f .claude/rules/build-background.md
+      - name: Validate SKILL.md name fields
+        run: |
+          for skill in skills/*/SKILL.md; do
+            if ! grep -q '^name:' "$skill"; then
+              echo "FAIL: $skill missing required name field"
+              exit 1
+            fi
+            echo "OK: $skill has name field"
+          done
+      - name: Check no SKILL_DIR in SKILL.md files
+        run: |
+          if grep -rl '\$SKILL_DIR' skills/*/SKILL.md; then
+            echo "FAIL: SKILL.md files must use relative paths, not \$SKILL_DIR"
+            exit 1
+          fi
+          echo "OK: no \$SKILL_DIR references in SKILL.md files"
+
   script-output:
     runs-on: ubuntu-latest
     steps:

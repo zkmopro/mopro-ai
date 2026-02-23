@@ -18,8 +18,9 @@ echo "=== Checking expected files ==="
 
 expected_files=(
   .claude-plugin/plugin.json
-  CLAUDE.md
+  AGENTS.md
   settings.json
+  .claude/rules/build-background.md
   README.md
   commands/build.md
   commands/check-env.md
@@ -63,6 +64,24 @@ done
 echo "--- $file_count / ${#expected_files[@]} files found ---"
 echo
 
+# ---------- 1b. Check CLAUDE.md symlink ----------
+
+echo "=== Checking CLAUDE.md symlink ==="
+
+if [[ -L "CLAUDE.md" ]]; then
+  target=$(readlink CLAUDE.md)
+  if [[ "$target" == "AGENTS.md" ]]; then
+    pass "CLAUDE.md is a symlink to AGENTS.md"
+  else
+    fail "CLAUDE.md symlink points to '$target' (expected AGENTS.md)"
+  fi
+elif [[ -f "CLAUDE.md" ]]; then
+  fail "CLAUDE.md exists but is not a symlink (should be symlink to AGENTS.md)"
+else
+  fail "CLAUDE.md does not exist"
+fi
+echo
+
 # ---------- 2. Validate YAML frontmatter ----------
 
 echo "=== Checking YAML frontmatter ==="
@@ -84,8 +103,31 @@ for cmd in commands/*.md; do
   check_frontmatter "$cmd"
 done
 
+check_skill_name() {
+  local file="$1"
+  if grep -q '^name:' "$file"; then
+    pass "$file has name field"
+  else
+    fail "$file missing required name field (agentskills.io spec)"
+  fi
+}
+
 for skill in skills/*/SKILL.md; do
   check_frontmatter "$skill"
+  check_skill_name "$skill"
+done
+echo
+
+# ---------- 2b. Validate no $SKILL_DIR in SKILL.md files ----------
+
+echo "=== Checking no \$SKILL_DIR in SKILL.md files ==="
+
+for skill in skills/*/SKILL.md; do
+  if grep -q '\$SKILL_DIR' "$skill"; then
+    fail "$skill contains \$SKILL_DIR (use relative paths per agentskills.io spec)"
+  else
+    pass "$skill has no \$SKILL_DIR references"
+  fi
 done
 echo
 

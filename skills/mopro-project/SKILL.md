@@ -1,7 +1,7 @@
 ---
 name: mopro-project
 description: Initialize mopro projects, build ZK bindings for mobile platforms, create app templates, scaffold new ZK apps, compile for iOS/Android/Flutter/React Native/Web, mopro init, mopro build, mopro create
-license: MIT
+license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
   version: "0.1.0"

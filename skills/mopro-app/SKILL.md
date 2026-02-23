@@ -1,7 +1,7 @@
 ---
 name: mopro-app
 description: Build mobile apps with mopro, create iOS app, build Android app, Flutter ZK app, React Native app, Web WASM app, integrate mopro bindings, add zero-knowledge proofs to mobile app, generate app from description
-license: MIT
+license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
   version: "0.1.0"

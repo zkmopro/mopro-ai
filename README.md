@@ -124,3 +124,7 @@ Run `/mopro:check-env` for a full diagnostic.
 - [Agent Skills spec](https://agentskills.io)
 - [AGENTS.md spec](https://agents.md)
 - [Claude Code plugins](https://docs.anthropic.com/en/docs/claude-code)
+
+## License
+
+Licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or [MIT License](LICENSE-MIT) at your option.

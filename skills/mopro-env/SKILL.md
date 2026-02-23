@@ -1,7 +1,7 @@
 ---
 name: mopro-env
 description: Check mopro development environment, install prerequisites, setup toolchain, diagnose missing build tools, resolve environment issues for mobile ZK development
-license: MIT
+license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
   version: "0.1.0"

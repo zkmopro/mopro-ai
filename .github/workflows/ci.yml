@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  json-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON syntax
+        run: |
+          jq . .claude-plugin/plugin.json
+          jq . settings.json
+      - name: Check plugin.json required fields
+        run: jq -e '.name and .version and .description' .claude-plugin/plugin.json
+
+  shellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint shell scripts
+        run: |
+          shellcheck skills/mopro-env/scripts/check-env.sh
+          shellcheck skills/mopro-device/scripts/list-devices.sh
+      - name: Syntax check shell scripts
+        run: |
+          bash -n skills/mopro-env/scripts/check-env.sh
+          bash -n skills/mopro-device/scripts/list-devices.sh
+
+  plugin-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate plugin structure
+        run: bash tests/validate-structure.sh
+
+  script-output:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate check-env.sh JSON output
+        run: bash skills/mopro-env/scripts/check-env.sh all | jq .
+      - name: Validate list-devices.sh JSON output
+        run: bash skills/mopro-device/scripts/list-devices.sh all | jq .

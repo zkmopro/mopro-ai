@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mopro --help)",
+      "Bash(mopro --version)",
+      "Bash(rustc --version)",
+      "Bash(cargo --version)",
+      "Bash(cmake --version)",
+      "Bash(xcrun simctl list *)",
+      "Bash(xcodebuild -version)",
+      "Bash(flutter --version)",
+      "Bash(flutter devices)",
+      "Bash(flutter doctor)",
+      "Bash(node --version)",
+      "Bash(java -version)",
+      "Bash(adb devices)",
+      "Bash(wasm-pack --version)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(test *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "WebFetch(domain:zkmopro.org)"
+    ]
+  }
+}

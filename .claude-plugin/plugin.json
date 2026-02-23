@@ -1,0 +1,6 @@
+{
+  "name": "mopro",
+  "version": "0.1.0",
+  "description": "Claude Code plugin for building mobile-native zero-knowledge proof applications with mopro",
+  "homepage": "https://github.com/zkmopro/mopro-ai"
+}

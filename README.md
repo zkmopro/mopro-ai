@@ -1,6 +1,6 @@
 # mopro-ai
 
-A [Claude Code plugin](https://docs.anthropic.com/en/docs/claude-code) for building mobile-native zero-knowledge proof applications with [mopro](https://zkmopro.org).
+An [Agent Skills](https://agentskills.io) package for building mobile-native zero-knowledge proof applications with [mopro](https://zkmopro.org). Also works as a [Claude Code plugin](https://docs.anthropic.com/en/docs/claude-code).
 
 ## What is mopro?
 
@@ -28,7 +28,7 @@ claude --plugin-dir /path/to/mopro-ai
 
 ## Skills (Auto-Triggered)
 
-Skills activate automatically based on what you ask Claude:
+Skills activate automatically based on what you ask your AI agent:
 
 | Skill | Triggers on |
 |---|---|
@@ -60,31 +60,45 @@ Or just describe what you want:
 ```
 > I want to build a ZK voting app for iOS using Noir
 
-  Claude will auto-trigger mopro-env → mopro-project → mopro-app skills
+  Your agent will auto-trigger mopro-env → mopro-project → mopro-app skills
   to guide you through the full setup.
 ```
 
-## Plugin Structure
+## Agent Compatibility
+
+This package follows the [Agent Skills](https://agentskills.io) open standard and uses [AGENTS.md](https://agents.md) for universal agent instructions.
+
+| Layer | Files | Purpose |
+|---|---|---|
+| **Agent-agnostic** | `AGENTS.md`, `skills/*/SKILL.md` | Portable across all agents |
+| **Claude Code adapter** | `CLAUDE.md` (symlink), `commands/`, `.claude/rules/`, `settings.json`, `.claude-plugin/` | Claude Code-specific features |
+
+**Supported agents**: Claude Code, Cursor, VS Code Copilot, Codex CLI, Gemini CLI, and any agent that supports the agentskills.io spec or AGENTS.md.
+
+## Package Structure
 
 ```
 mopro-ai/
-├── .claude-plugin/plugin.json     # Plugin manifest
-├── CLAUDE.md                      # Always-loaded context (guardrails, CLI reference)
-├── settings.json                  # Tiered permissions
-├── commands/                      # /mopro:* slash commands
-│   ├── check-env.md
-│   ├── new.md
-│   ├── init.md
-│   ├── build.md
-│   ├── create.md
-│   ├── test.md
-│   └── device.md
-└── skills/                        # Auto-triggered domain knowledge
-    ├── mopro-env/                 # Environment setup + check-env.sh
-    ├── mopro-project/             # Init/build/create workflow + references
-    ├── mopro-app/                 # Platform integration guides (5 platforms)
-    ├── mopro-test/                # Rust, FFI, and UI testing patterns
-    └── mopro-device/              # Simulator/emulator/device management
+├── AGENTS.md                      # Universal agent instructions (portable)
+├── CLAUDE.md -> AGENTS.md         # Symlink for Claude Code compatibility
+├── skills/                        # Agent Skills (agentskills.io spec)
+│   ├── mopro-env/                 # Environment setup + check-env.sh
+│   ├── mopro-project/             # Init/build/create workflow + references
+│   ├── mopro-app/                 # Platform integration guides (5 platforms)
+│   ├── mopro-test/                # Rust, FFI, and UI testing patterns
+│   └── mopro-device/              # Simulator/emulator/device management
+├── .claude-plugin/plugin.json     # Claude Code plugin manifest
+├── .claude/rules/                 # Claude Code-specific rules
+│   └── build-background.md        # run_in_background=true for builds
+├── settings.json                  # Claude Code permissions
+└── commands/                      # Claude Code /mopro:* slash commands
+    ├── check-env.md
+    ├── new.md
+    ├── init.md
+    ├── build.md
+    ├── create.md
+    ├── test.md
+    └── device.md
 ```
 
 ## Key Design Decisions
@@ -107,4 +121,6 @@ Run `/mopro:check-env` for a full diagnostic.
 
 - [mopro documentation](https://zkmopro.org)
 - [mopro GitHub](https://github.com/zkmopro/mopro)
+- [Agent Skills spec](https://agentskills.io)
+- [AGENTS.md spec](https://agents.md)
 - [Claude Code plugins](https://docs.anthropic.com/en/docs/claude-code)

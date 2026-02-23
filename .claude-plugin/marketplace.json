@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "mopro-ai",
+  "description": "Mopro plugin for building mobile-native zero-knowledge proof apps",
+  "owner": {
+    "name": "zkmopro"
+  },
+  "plugins": [
+    {
+      "name": "mopro",
+      "description": "Build mobile-native zero-knowledge proof apps with mopro (Circom, Halo2, Noir \u2192 iOS, Android, Flutter, React Native, Web)",
+      "version": "0.1.0",
+      "author": {
+        "name": "zkmopro"
+      },
+      "source": ".",
+      "category": "development",
+      "homepage": "https://zkmopro.org",
+      "tags": ["zk", "zero-knowledge", "mobile", "mopro"]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: mopro-test
 description: Add tests for mopro projects, test proof generation and verification, test FFI bindings, create unit tests for ZK circuits, verify proofs work, run cargo test, test mobile app, XCTest, Android instrumented tests
-license: MIT
+license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
   version: "0.1.0"

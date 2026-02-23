@@ -1,7 +1,7 @@
 ---
 name: mopro-device
 description: Manage simulators and emulators for mopro development, run on iOS simulator, start Android emulator, list connected devices, test on phone, launch simulator, deploy to device
-license: MIT
+license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
   version: "0.1.0"

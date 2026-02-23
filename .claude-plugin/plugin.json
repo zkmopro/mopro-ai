@@ -8,6 +8,6 @@
   },
   "homepage": "https://zkmopro.org",
   "repository": "https://github.com/zkmopro/mopro-ai",
-  "license": "MIT",
+  "license": "MIT OR Apache-2.0",
   "keywords": ["zk", "zero-knowledge", "mobile", "ios", "android", "flutter", "react-native", "circom", "halo2", "noir", "mopro"]
 }

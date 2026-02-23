@@ -70,8 +70,7 @@ if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "ios" ] || [ "$PLATFORM" = "flutte
     fi
 
     if command -v xcode-select &>/dev/null && xcode-select -p &>/dev/null; then
-        CLI_PATH="$(xcode-select -p 2>&1)"
-        add_result "xcode-cli" "true" "\"configured\"" "false" "ios"
+        add_result "xcode-cli" "true" "\"$(xcode-select -p 2>&1)\"" "false" "ios"
     else
         add_result "xcode-cli" "false" "null" "false" "ios"
     fi
@@ -101,7 +100,7 @@ if [ "$PLATFORM" = "all" ] || [ "$PLATFORM" = "android" ] || [ "$PLATFORM" = "fl
     # Android NDK
     NDK_HOME="${ANDROID_HOME:-$HOME/Library/Android/sdk}/ndk"
     if [ -d "$NDK_HOME" ] && [ "$(ls -A "$NDK_HOME" 2>/dev/null)" ]; then
-        NDK_VER="\"$(ls "$NDK_HOME" | sort -V | tail -1)\""
+        NDK_VER="\"$(find "$NDK_HOME" -maxdepth 1 -mindepth 1 -exec basename {} \; | sort -V | tail -1)\""
         add_result "android-ndk" "true" "$NDK_VER" "false" "android"
     else
         add_result "android-ndk" "false" "null" "false" "android"

@@ -8,17 +8,9 @@ Mopro is a developer toolkit for building mobile ZK apps. It uses Rust + UniFFI 
 
 ## Installation
 
-Add the mopro marketplace and install the plugin:
-
 ```bash
-# In Claude Code:
-/plugin marketplace add zkmopro/mopro-ai
-/plugin install mopro
-```
-
-Or for local development:
-
-```bash
+claude plugin add /path/to/mopro-ai
+# or
 claude --plugin-dir /path/to/mopro-ai
 ```
 

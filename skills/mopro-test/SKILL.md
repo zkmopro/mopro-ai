@@ -4,7 +4,7 @@ description: Add tests for mopro projects, test proof generation and verificatio
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
-  version: "0.1.0"
+  version: "0.3.0"
 ---
 
 # Mopro Testing

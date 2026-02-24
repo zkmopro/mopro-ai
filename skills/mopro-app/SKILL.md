@@ -4,7 +4,7 @@ description: Build mobile apps with mopro, create iOS app, build Android app, Fl
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
-  version: "0.1.0"
+  version: "0.3.0"
 ---
 
 # Mopro App Development

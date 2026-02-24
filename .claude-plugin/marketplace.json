@@ -9,7 +9,7 @@
     {
       "name": "mopro",
       "description": "Build mobile-native zero-knowledge proof apps with mopro (Circom, Halo2, Noir \u2192 iOS, Android, Flutter, React Native, Web)",
-      "version": "0.1.0",
+      "version": "0.3.0",
       "author": {
         "name": "zkmopro"
       },

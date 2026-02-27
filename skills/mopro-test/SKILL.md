@@ -1,6 +1,11 @@
 ---
 name: mopro-test
-description: Add tests for mopro projects, test proof generation and verification, test FFI bindings, create unit tests for ZK circuits, verify proofs work, run cargo test, test mobile app, XCTest, Android instrumented tests
+description: >-
+  Write and run tests for mopro projects at three levels: Rust unit tests, FFI
+  binding tests, and mobile UI tests. Use this skill whenever someone wants to
+  test proof generation, verify bindings work, add test coverage, or diagnose
+  test failures. Also use when someone asks "does it work" or "how do I verify"
+  in a mopro project context.
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro

@@ -1,6 +1,11 @@
 ---
 name: mopro-device
-description: Manage simulators and emulators for mopro development, run on iOS simulator, start Android emulator, list connected devices, test on phone, launch simulator, deploy to device
+description: >-
+  Manage iOS simulators, Android emulators, and physical devices for testing
+  mopro apps. Use whenever someone wants to list, start, or run on a simulator
+  or emulator, deploy to a phone, or troubleshoot device issues. Also use when
+  a user says "run my app" or "test on device" even if they don't mention
+  simulators explicitly.
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro

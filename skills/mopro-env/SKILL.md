@@ -8,7 +8,7 @@ description: >-
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
-  version: "0.3.0"
+  version: "0.3.1"
 ---
 
 # Mopro Environment Setup

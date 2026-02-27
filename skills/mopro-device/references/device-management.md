@@ -40,20 +40,26 @@ xcrun simctl create "My iPhone" "iPhone 16" "iOS-18-0"
 ### Booting and Shutting Down
 
 ```bash
-# Boot a simulator by name
+# Boot a simulator by name (non-blocking)
 xcrun simctl boot "iPhone 16"
 
 # Boot by UDID
 xcrun simctl boot <UDID>
-
-# Open Simulator.app (boots default if none running)
-open -a Simulator
 
 # Shutdown a specific simulator
 xcrun simctl shutdown "iPhone 16"
 
 # Shutdown all simulators
 xcrun simctl shutdown all
+```
+
+Do NOT use `open -a Simulator` — it blocks the agent indefinitely.
+
+### Boot Verification
+
+After booting, verify the simulator is ready:
+```bash
+xcrun simctl list devices booted
 ```
 
 ### Installing and Running Apps
@@ -129,12 +135,10 @@ $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd \
 
 ### Starting and Stopping
 
+Start the emulator using `run_in_background=true` (do NOT use shell `&`):
 ```bash
-# Start emulator (foreground)
+# Start emulator
 $ANDROID_HOME/emulator/emulator -avd Pixel_6_API_34
-
-# Start in background
-$ANDROID_HOME/emulator/emulator -avd Pixel_6_API_34 &
 
 # Start with specific options
 $ANDROID_HOME/emulator/emulator -avd Pixel_6_API_34 \
@@ -144,6 +148,15 @@ $ANDROID_HOME/emulator/emulator -avd Pixel_6_API_34 \
 
 # Kill running emulator
 adb -s emulator-5554 emu kill
+```
+
+### Boot Verification
+
+After starting, verify the emulator is ready:
+```bash
+adb wait-for-device
+adb shell getprop sys.boot_completed
+# Returns "1" when fully booted
 ```
 
 ### Installing and Running Apps

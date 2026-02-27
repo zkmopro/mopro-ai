@@ -11,6 +11,8 @@ init → build → create → develop → update (repeat build→update as circu
 ## CLI Quick Reference
 - `mopro init --project_name NAME --adapter circom,noir` (non-interactive)
 - `mopro build --platforms ios --mode release --architectures aarch64-apple-ios-sim`
+- `mopro build --platforms flutter --mode release` (Flutter — NOT --platforms ios)
+- `mopro build --platforms react-native --mode release` (RN — NOT --platforms ios)
 - `mopro create --framework flutter`
 - `mopro update --src ./ios_bindings --dest ../MyApp --no_prompt`
 - `mopro bindgen --circuit-dir ./circuits --platforms ios`
@@ -28,6 +30,10 @@ init → build → create → develop → update (repeat build→update as circu
 - Always confirm platform selection before building (it takes too long to redo).
 - If mopro-cli is not installed, guide user to `cargo install mopro-cli`. Do NOT
   attempt to manually recreate project scaffolding.
+- For cross-platform frameworks, use `--platforms flutter` or
+  `--platforms react-native`. NEVER use `--platforms ios` or
+  `--platforms android` for Flutter or React Native apps — those produce
+  native-only bindings that are incompatible.
 
 ## Project Detection
 Before running any mopro CLI command (build, create, update, bindgen), verify

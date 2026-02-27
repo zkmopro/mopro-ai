@@ -67,6 +67,10 @@ See references/project-structure.md for expected layout.
 
 Gather required parameters:
 - **Platform(s)**: ios, android, flutter, react-native, web
+> **CRITICAL:** For Flutter apps use `--platforms flutter`, for React Native
+> apps use `--platforms react-native`. NEVER use `--platforms ios` or
+> `--platforms android` for cross-platform frameworks — those produce
+> native-only bindings incompatible with flutter_rust_bridge or Turbo Modules.
 - **Mode**: release (default) or debug
 - **Architectures**: Default to minimal for testing:
   - iOS: `aarch64-apple-ios-sim` (simulator only)

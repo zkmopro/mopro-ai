@@ -272,6 +272,41 @@ flutter run -d <device_id>     # Specific device
 
 Full implementation examples: https://github.com/zkmopro/flutter-app
 
+## Updating Bindings After Circuit Changes
+
+Flutter does NOT use `mopro update`. The app references
+`mopro_flutter_bindings/` via a path dependency in `pubspec.yaml`:
+
+```yaml
+dependencies:
+  mopro_flutter_plugin:
+    path: ./mopro_flutter_bindings
+```
+
+When circuits change:
+
+1. Rebuild bindings:
+   ```bash
+   mopro build --platforms flutter --mode release
+   ```
+
+2. Refresh Dart dependencies:
+   ```bash
+   flutter pub get
+   ```
+
+3. Update circuit assets if `.zkey`/`.json`/`.bin` files changed:
+   ```bash
+   cp /path/to/new/circuit_final.zkey assets/
+   ```
+
+4. Run the app — new bindings are picked up automatically:
+   ```bash
+   flutter run
+   ```
+
+Do NOT run `mopro update` for Flutter projects.
+
 ## Common Issues
 
 ### "RustLib not initialized"

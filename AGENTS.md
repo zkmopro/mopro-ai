@@ -29,6 +29,18 @@ init → build → create → develop → update (repeat build→update as circu
 - If mopro-cli is not installed, guide user to `cargo install mopro-cli`. Do NOT
   attempt to manually recreate project scaffolding.
 
+## Project Detection
+Before running any mopro CLI command (build, create, update, bindgen), verify
+the working directory is inside an initialized mopro project. Check for ALL of:
+- `Cargo.toml` containing `mopro-ffi` dependency
+- `src/lib.rs` exists
+- `test-vectors/` directory exists
+
+If any marker is missing, stop and tell the user:
+"This directory does not appear to be an initialized mopro project.
+Run `mopro init` first, or `cd` into your existing mopro project directory."
+Do NOT attempt to create these files manually.
+
 ## Build Duration Handling
 For long-running builds, run builds in background if your agent supports
 background or async execution. Check on progress periodically.

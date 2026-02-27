@@ -20,6 +20,18 @@ for zero-knowledge proof generation and verification.
 - User wants to generate/verify proofs in their app code
 - User encounters app integration errors
 
+## Prerequisite Check
+
+Before proceeding, verify the user has an initialized mopro project with
+completed bindings. Check for:
+1. `Cargo.toml` containing `mopro-ffi` — if missing, direct to `mopro init`
+2. At least one binding output directory (`MoproiOSBindings/`,
+   `MoproAndroidBindings/`, `mopro_flutter_bindings/`,
+   `MoproReactNativeBindings/`, or `MoproWasmBindings/`) — if missing,
+   direct to `mopro build`
+
+Only proceed to app development once bindings exist.
+
 ## Two Modes
 
 ### Mode 1: Template (Quick Start)

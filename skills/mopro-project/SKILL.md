@@ -24,6 +24,17 @@ Each step must complete and be confirmed before proceeding to the next.
 
 ### Step 1: Determine Which Stage
 
+**Prerequisite gate (for build, create, update, bindgen):**
+Before proceeding past init, verify the working directory is an initialized
+mopro project. Check for ALL three markers:
+1. `Cargo.toml` exists and contains `mopro-ffi` in its dependencies
+2. `src/lib.rs` exists
+3. `test-vectors/` directory exists
+
+If any marker is missing, STOP and direct the user to run `mopro init`.
+Do NOT attempt to create these files manually.
+
+**Stage detection:**
 Ask the user or detect from context which lifecycle stage they need:
 
 1. **Init**: Creating a brand new project (`mopro init`)

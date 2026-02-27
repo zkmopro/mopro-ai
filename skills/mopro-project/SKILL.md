@@ -112,6 +112,13 @@ Proceed? [Y/n]
 
 When circuits change and bindings need refreshing:
 
+> **Flutter exception:** Flutter apps do NOT use `mopro update`. The app's
+> `pubspec.yaml` has a path dependency to `mopro_flutter_bindings/` which
+> points directly to the build output. Just re-run
+> `mopro build --platforms flutter` and then `flutter pub get`.
+
+For iOS, Android, React Native, and Web:
+
 ```bash
 mopro build --platforms <platform> --mode release
 mopro update --src ./<BindingsDir> --dest ../<AppDir> --no_prompt

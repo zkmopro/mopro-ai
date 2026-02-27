@@ -7,6 +7,8 @@ Noir (Barretenberg).
 
 ## Lifecycle
 init → build → create → develop → update (repeat build→update as circuits change)
+Flutter exception: skip `mopro update` — rebuild with
+`mopro build --platforms flutter` then `flutter pub get`.
 
 ## CLI Quick Reference
 - `mopro init --project_name NAME --adapter circom,noir` (non-interactive)

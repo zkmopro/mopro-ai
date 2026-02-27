@@ -25,6 +25,13 @@ Each step must complete and be confirmed before proceeding to the next.
 - User asks about mopro CLI commands or flags
 - User encounters init/build/create errors
 
+## Related Skills
+
+- **mopro-env**: Run first to verify prerequisites are installed
+- **mopro-app**: After build + create, use for app customization and integration
+- **mopro-device**: For running the generated app on simulators/emulators
+- **mopro-test**: For testing proof generation and verification
+
 ## Workflow
 
 ### Step 1: Determine Which Stage

@@ -25,6 +25,12 @@ for zero-knowledge proof generation and verification.
 - User wants to generate/verify proofs in their app code
 - User encounters app integration errors
 
+## Related Skills
+
+- **mopro-project**: If bindings don't exist yet, use to init + build first
+- **mopro-device**: For running the app on simulators or physical devices
+- **mopro-test**: For testing the integrated app
+
 ## Prerequisite Check
 
 Before proceeding, verify the user has an initialized mopro project with

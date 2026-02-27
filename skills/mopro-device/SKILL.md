@@ -24,6 +24,11 @@ for testing mopro apps.
 - User asks about deploying to a physical device
 - User encounters simulator/emulator issues
 
+## Related Skills
+
+- **mopro-app**: For building the app to deploy
+- **mopro-test**: For running tests on devices
+
 ## Actions
 
 ### List Devices

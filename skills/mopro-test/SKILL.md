@@ -25,6 +25,11 @@ Rust unit tests, FFI binding tests, and mobile UI tests.
 - User wants platform-specific UI tests
 - User encounters test failures
 
+## Related Skills
+
+- **mopro-project**: Ensure project is initialized before testing
+- **mopro-device**: For running FFI/UI tests on simulators/emulators
+
 ## Three Test Levels
 
 ### Level 1: Rust Unit Tests

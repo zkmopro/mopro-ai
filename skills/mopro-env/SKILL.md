@@ -24,6 +24,10 @@ development and guides them through installing missing prerequisites.
 - User asks "what do I need to install"
 - User encounters "command not found" errors for rust, cmake, mopro, etc.
 
+## Related Skills
+
+- **mopro-project**: After environment is ready, proceed to project initialization
+
 ## Workflow
 
 ### Step 1: Run Environment Check

@@ -1,0 +1,71 @@
+{
+  "skill_name": "all-skills",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to build a ZK voting app for iPhone. Where do I start?",
+      "expected_output": "Should trigger mopro-project (init) and eventually mopro-app",
+      "expected_skills": ["mopro-project", "mopro-app"]
+    },
+    {
+      "id": 2,
+      "prompt": "mopro build is failing with 'NDK not found'. Help?",
+      "expected_output": "Should trigger mopro-env for troubleshooting",
+      "expected_skills": ["mopro-env", "mopro-project"]
+    },
+    {
+      "id": 3,
+      "prompt": "How do I run my Flutter app on the iPhone simulator?",
+      "expected_output": "Should trigger mopro-device",
+      "expected_skills": ["mopro-device"]
+    },
+    {
+      "id": 4,
+      "prompt": "I need to verify that my circom proofs work correctly on Android",
+      "expected_output": "Should trigger mopro-test",
+      "expected_skills": ["mopro-test"]
+    },
+    {
+      "id": 5,
+      "prompt": "I already have a React Native app and want to add ZK proof generation",
+      "expected_output": "Should trigger mopro-app for custom integration",
+      "expected_skills": ["mopro-app"]
+    },
+    {
+      "id": 6,
+      "prompt": "What tools do I need installed before I can use mopro?",
+      "expected_output": "Should trigger mopro-env",
+      "expected_skills": ["mopro-env"]
+    },
+    {
+      "id": 7,
+      "prompt": "Build a simple REST API with Express.js",
+      "expected_output": "Should NOT trigger any mopro skill",
+      "expected_skills": []
+    },
+    {
+      "id": 8,
+      "prompt": "Help me write a Solidity smart contract for token transfers",
+      "expected_output": "Should NOT trigger any mopro skill (ZK-adjacent but not mopro)",
+      "expected_skills": []
+    },
+    {
+      "id": 9,
+      "prompt": "I ran mopro build for ios and it's been 10 minutes with no output. Did it crash?",
+      "expected_output": "Should trigger mopro-project (build troubleshooting)",
+      "expected_skills": ["mopro-project"]
+    },
+    {
+      "id": 10,
+      "prompt": "list my available simulators",
+      "expected_output": "Should trigger mopro-device for listing",
+      "expected_skills": ["mopro-device"]
+    },
+    {
+      "id": 11,
+      "prompt": "How do I generate and verify a Groth16 proof with snarkjs in Node.js?",
+      "expected_output": "Should NOT trigger any mopro skill (ZK tooling but not mopro — snarkjs is a standalone JS library)",
+      "expected_skills": []
+    }
+  ]
+}

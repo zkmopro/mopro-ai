@@ -1,6 +1,11 @@
 ---
 name: mopro-project
-description: Initialize mopro projects, build ZK bindings for mobile platforms, create app templates, scaffold new ZK apps, compile for iOS/Android/Flutter/React Native/Web, mopro init, mopro build, mopro create
+description: >-
+  Guide users through the mopro CLI lifecycle: initializing projects, building
+  ZK bindings, creating app templates, and updating bindings. Use this skill
+  whenever someone mentions mopro init, mopro build, mopro create, or asks
+  how to start a zero-knowledge proof project for mobile. Also use when
+  troubleshooting CLI commands or selecting build architectures.
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
@@ -19,6 +24,13 @@ Each step must complete and be confirmed before proceeding to the next.
 - User wants to create an app template from bindings
 - User asks about mopro CLI commands or flags
 - User encounters init/build/create errors
+
+## Related Skills
+
+- **mopro-env**: Run first to verify prerequisites are installed
+- **mopro-app**: After build + create, use for app customization and integration
+- **mopro-device**: For running the generated app on simulators/emulators
+- **mopro-test**: For testing proof generation and verification
 
 ## Workflow
 

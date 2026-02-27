@@ -1,6 +1,11 @@
 ---
 name: mopro-app
-description: Build mobile apps with mopro, create iOS app, build Android app, Flutter ZK app, React Native app, Web WASM app, integrate mopro bindings, add zero-knowledge proofs to mobile app, generate app from description
+description: >-
+  Build and customize mobile apps with mopro ZK proof integration. Use whenever
+  someone wants to create an iOS, Android, Flutter, React Native, or Web app
+  with zero-knowledge proofs, integrate mopro bindings into an existing app, or
+  asks about platform-specific setup (Xcode, Gradle, pubspec, package.json).
+  Also use when someone describes a custom ZK app idea they want to build.
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
@@ -19,6 +24,12 @@ for zero-knowledge proof generation and verification.
 - User asks about platform-specific setup (Xcode, Android Studio, Flutter, RN)
 - User wants to generate/verify proofs in their app code
 - User encounters app integration errors
+
+## Related Skills
+
+- **mopro-project**: If bindings don't exist yet, use to init + build first
+- **mopro-device**: For running the app on simulators or physical devices
+- **mopro-test**: For testing the integrated app
 
 ## Prerequisite Check
 

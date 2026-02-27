@@ -44,21 +44,25 @@ About to boot <device_name>. Proceed?
 **iOS:**
 ```bash
 xcrun simctl boot "<device_name>"
-open -a Simulator
+```
+Do NOT use `open -a Simulator` — it blocks the agent indefinitely.
+
+Verify the simulator booted:
+```bash
+xcrun simctl list devices booted
 ```
 
 **Android:**
 ```bash
-$ANDROID_HOME/emulator/emulator -avd <avd_name> &
+$ANDROID_HOME/emulator/emulator -avd <avd_name>
 ```
+Use `run_in_background=true` for the Bash tool call (do NOT use shell `&`).
 
-4. Verify the device is running:
+Verify the emulator is ready:
 ```bash
-# iOS
-xcrun simctl list devices booted
-
-# Android
-adb devices
+adb wait-for-device
+adb shell getprop sys.boot_completed
+# Returns "1" when fully booted
 ```
 
 ### Action: run

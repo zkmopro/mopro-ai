@@ -1,6 +1,10 @@
 ---
 name: mopro-env
-description: Check mopro development environment, install prerequisites, setup toolchain, diagnose missing build tools, resolve environment issues for mobile ZK development
+description: >-
+  Check and fix the development environment for mopro. Use this skill whenever
+  a user reports "command not found" errors, missing build tools, or asks what
+  they need to install. Also use proactively before any mopro build if the user
+  hasn't confirmed their environment is set up, or when they're starting fresh.
 license: MIT OR Apache-2.0
 metadata:
   author: zkmopro
@@ -19,6 +23,10 @@ development and guides them through installing missing prerequisites.
 - User is starting fresh with mopro
 - User asks "what do I need to install"
 - User encounters "command not found" errors for rust, cmake, mopro, etc.
+
+## Related Skills
+
+- **mopro-project**: After environment is ready, proceed to project initialization
 
 ## Workflow
 

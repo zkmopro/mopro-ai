@@ -59,20 +59,34 @@ About to boot <device_name>. This may take a moment. Proceed?
 # List available simulators
 xcrun simctl list devices available
 
-# Boot a specific simulator
+# Boot a specific simulator (non-blocking)
 xcrun simctl boot "iPhone 16"
-
-# Or open Simulator.app directly
-open -a Simulator
 ```
+
+After booting, verify the simulator is ready:
+```bash
+xcrun simctl list devices booted
+```
+
+Do NOT use `open -a Simulator` — it blocks the agent indefinitely.
+Use `xcrun simctl boot` instead, which returns immediately.
 
 **Android Emulator:**
 ```bash
 # List available AVDs
 $ANDROID_HOME/emulator/emulator -list-avds
+```
 
-# Start an emulator (runs in background)
-$ANDROID_HOME/emulator/emulator -avd <avd_name> &
+Start the emulator using `run_in_background=true` (do NOT use shell `&`):
+```bash
+$ANDROID_HOME/emulator/emulator -avd <avd_name>
+```
+
+After starting, verify the emulator is ready:
+```bash
+adb wait-for-device
+adb shell getprop sys.boot_completed
+# Returns "1" when fully booted
 ```
 
 If no AVD exists, guide the user to create one in Android Studio:

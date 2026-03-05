@@ -77,6 +77,10 @@ See references/project-structure.md for expected layout.
 
 **CRITICAL: Warn about build duration before starting.**
 
+**CRITICAL: Always use non-interactive mode.** Pass `--platforms`, `--mode`,
+and `--architectures` explicitly to every `mopro build` invocation. The CLI
+will prompt interactively if any flag is missing, which blocks AI agents.
+
 Gather required parameters:
 - **Platform(s)**: ios, android, flutter, react-native, web
 > **CRITICAL:** For Flutter apps use `--platforms flutter`, for React Native

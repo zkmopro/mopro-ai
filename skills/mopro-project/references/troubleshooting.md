@@ -201,6 +201,26 @@ import uniffi.my-zk-app.*  // WRONG — hyphens cause syntax error
 
 The generated `mopro.kt` file's package declaration will show the correct name.
 
+## 11. Circom Circuit Name with Underscores Breaks Witness Resolution
+
+**Symptoms:**
+- `rust_witness!` macro fails to resolve the witness module
+- Build error: `unresolved import` for the witness function
+- Circuit compiles fine but Rust build fails
+
+**Cause:** Circom strips underscores from generated symbol names. A circuit
+named `challenge_response` produces a witness module named `challengeresponse`,
+but `rust_witness!` expects `challenge_response`, causing a mismatch.
+
+**Fix:**
+1. Rename the `.circom` file to camelCase: `challengeResponse.circom`
+2. Recompile the circuit to regenerate `.zkey` and `.wasm` artifacts
+3. Update `src/lib.rs` to reference the new circuit name
+4. Replace artifacts in `test-vectors/circom/`
+
+**Prevention:** Always use camelCase for Circom circuit filenames. Never use
+underscores (e.g., `challengeResponse`, NOT `challenge_response`).
+
 ## General Debugging Tips
 
 **Check mopro version:**

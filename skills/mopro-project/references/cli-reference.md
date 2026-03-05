@@ -21,14 +21,14 @@ cargo install --path .
 
 Creates a new mopro project with Rust scaffolding and test vectors.
 
-**Interactive mode** (prompts for all options):
-```bash
-mopro init
-```
-
-**Non-interactive mode** (CI-friendly):
+**Non-interactive mode** (always use this for AI agents):
 ```bash
 mopro init --project_name my_zk_app --adapter circom,noir
+```
+
+**Interactive mode** (human terminal only — do NOT use in agents):
+```bash
+mopro init
 ```
 
 **Flags:**
@@ -43,14 +43,14 @@ mopro init --project_name my_zk_app --adapter circom,noir
 
 Compiles Rust project into platform-specific bindings.
 
-**Interactive mode:**
-```bash
-mopro build
-```
-
-**Non-interactive mode:**
+**Non-interactive mode** (always use this for AI agents):
 ```bash
 mopro build --platforms ios --mode release --architectures aarch64-apple-ios-sim
+```
+
+**Interactive mode** (human terminal only — do NOT use in agents):
+```bash
+mopro build
 ```
 
 **Flags:**
@@ -120,6 +120,9 @@ mopro bindgen --circuit-dir ./circuits --platforms ios
 ### `mopro --help`
 
 Shows all available commands and global flags.
+**AI agents should NOT run this command** — all flags are documented in this
+reference and in AGENTS.md. Running `--help` wastes time and provides no
+additional information beyond what is already here.
 
 ### `mopro --version`
 
@@ -134,6 +137,11 @@ Uses Groth16 proving system over BN254 or BLS12-381 curves.
 **Required artifacts** (place in `test-vectors/circom/`):
 - `<circuit_name>_final.zkey` — proving key from snarkjs trusted setup
 - `<circuit_name>.wasm` — witness generator compiled by circom
+
+**Circuit naming:** NEVER use underscores in Circom circuit filenames. Circom
+strips underscores from generated symbols, breaking `rust_witness!` macro
+resolution. Use camelCase (e.g., `challengeResponse.circom`, NOT
+`challenge_response.circom`).
 
 **Rust configuration** in `src/lib.rs`:
 ```rust

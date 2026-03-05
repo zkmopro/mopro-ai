@@ -10,13 +10,14 @@ init → build → create → develop → update (repeat build→update as circu
 Flutter exception: skip `mopro update` — rebuild with
 `mopro build --platforms flutter` then `flutter pub get`.
 
-## CLI Quick Reference
-- `mopro init --project_name NAME --adapter circom,noir` (non-interactive)
+## CLI Quick Reference (Non-Interactive — Always Use These Forms)
+- `mopro init --project_name NAME --adapter circom,noir`
 - `mopro build --platforms ios --mode release --architectures aarch64-apple-ios-sim`
+- `mopro build --platforms android --mode release --architectures x86_64-linux-android`
 - `mopro build --platforms flutter --mode release` (Flutter — NOT --platforms ios)
 - `mopro build --platforms react-native --mode release` (RN — NOT --platforms ios)
 - `mopro create --framework flutter`
-- `mopro update --src ./ios_bindings --dest ../MyApp --no_prompt`
+- `mopro update --src ./MoproiOSBindings --dest ../MyApp --no_prompt`
 - `mopro bindgen --circuit-dir ./circuits --platforms ios`
 
 ## Guardrails
@@ -36,6 +37,16 @@ Flutter exception: skip `mopro update` — rebuild with
   `--platforms react-native`. NEVER use `--platforms ios` or
   `--platforms android` for Flutter or React Native apps — those produce
   native-only bindings that are incompatible.
+- NEVER run `mopro --help` or `mopro <cmd> --help` — all flags are documented
+  above and in skill references. Running --help wastes time and provides no
+  additional information.
+- ALWAYS pass all required flags (`--platforms`, `--mode`, `--architectures`)
+  to avoid interactive prompts. The CLI will prompt interactively if flags are
+  missing, which blocks non-interactive agents.
+- Circom circuit filenames: NEVER use underscores in circuit names. Use
+  camelCase (e.g., `challengeResponse.circom`, NOT `challenge_response.circom`).
+  Circom strips underscores from generated symbols, breaking `rust_witness!`
+  macro resolution.
 
 ## Project Detection
 Before running any mopro CLI command (build, create, update, bindgen), verify
@@ -86,6 +97,8 @@ All adapters require inputs as flat, one-dimensional JSON string mappings:
 - Halo2 RSA on mobile: Crashes (~5GB memory needed, mobile has ~3GB)
 - Flutter release: Must disable code shrinking (minifyEnabled false)
 - Android imports: Replace hyphens with underscores in `import uniffi.<name>.*`
+- Circom circuit names: No underscores — circom strips them from generated
+  symbols, causing `rust_witness!` resolution failures
 
 ## Validated Versions
 - mopro-cli / mopro-ffi: 0.3.x
